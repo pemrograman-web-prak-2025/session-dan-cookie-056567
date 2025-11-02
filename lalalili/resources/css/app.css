@@ -1,0 +1,268 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* ----------------------------------------------------------------------
+   CSS GLOBAL DAN TAMPILAN LOGIN/REGISTER
+   ---------------------------------------------------------------------- */
+body {
+    /* Font yang digunakan untuk semua halaman */
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    margin: 0;
+}
+
+/* Style untuk form Login dan Register */
+.box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    width: 100%; 
+    max-width: 380px; /* Lebar maksimal form */
+    text-align: center;
+    /* Penataan posisi di tengah layar (hanya berlaku di halaman login/register) */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input[type="text"], 
+input[type="password"], 
+input[type="number"] { 
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; 
+    font-size: 16px;
+}
+
+/* Pesan Error */
+.error {
+    color: red;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+p {
+    margin-top: 15px;
+}
+/* Link warna default */
+a {
+    color: #2196F3; /* Biru */
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- BUTTON STYLES --- */
+.btn {
+    padding: 10px 15px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+/* Login Button */
+.btn-success {
+    background: #4CAF50; 
+    color: white;
+    width: 95%; /* Match form input width */
+}
+.btn-success:hover {
+    background: #45a049;
+}
+/* Register/Update Button */
+.btn-primary {
+    background: #2196F3; 
+    color: white;
+    width: 95%; /* Match form input width */
+}
+.btn-primary:hover {
+    background: #1976D2;
+}
+/* Kembali Button */
+.btn-secondary {
+    background: #ccc;
+    color: #333;
+    width: auto;
+}
+.btn-secondary:hover {
+    background: #bbb;
+}
+/* Edit Button */
+.btn-warning {
+    background: #ffc107;
+    color: #333;
+    padding: 5px 10px;
+}
+.btn-warning:hover {
+    background: #e0a800;
+}
+/* Hapus Button */
+.btn-danger {
+    background: #f44336;
+    color: white;
+    padding: 5px 10px;
+}
+.btn-danger:hover {
+    background: #da190b;
+}
+/* Logout Button */
+.btn-outline-danger {
+    background: transparent;
+    color: #f44336;
+    border: 1px solid #f44336;
+    padding: 8px 15px;
+}
+.btn-outline-danger:hover {
+    background: #f44336;
+    color: white;
+}
+
+/* --- CHECKBOX REMEMBER ME (dari admin_login) --- */
+.remember-me-container {
+    text-align: left; 
+    margin-top: 10px; 
+    margin-bottom: 15px; 
+    width: 95%; 
+    margin-left: auto; 
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.remember-me-container label {
+    font-size: 14px;
+    color: #555;
+    margin-left: 5px;
+    font-weight: normal;
+}
+.remember-me-container input[type="checkbox"] {
+    width: auto; 
+    margin: 0; 
+    padding: 0;
+    transform: scale(1.2); 
+    border: 1px solid #ccc;
+    vertical-align: middle;
+}
+
+/* ----------------------------------------------------------------------
+   CSS UNTUK HALAMAN CRUD (INDEX, CREATE, EDIT)
+   ---------------------------------------------------------------------- */
+.container-crud {
+    max-width: 1000px; /* Kontainer lebih lebar untuk tabel */
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Tabel Styling */
+.table-bordered {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.table-bordered th, .table-bordered td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+.table-primary {
+    background-color: #007bff; /* Biru muda untuk header tabel */
+    color: white;
+}
+.table-bordered th {
+    text-align: center;
+}
+.align-middle {
+    vertical-align: middle;
+}
+.text-center {
+    text-align: center;
+}
+.bg-white {
+    background-color: white;
+}
+
+/* Margin Utilities (Bootstrap replacement) */
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+/* Form Field Styling (untuk Create/Edit) */
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 0; /* Override margin dari input global */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+/* Mengatur ulang input agar tidak terpengaruh style .box */
+.container-crud input[type="text"], 
+.container-crud input[type="number"] {
+    width: 100%;
+    margin: 0;
+}
+
+
+/* Alert Messages */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
